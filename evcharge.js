@@ -14,7 +14,17 @@ app.get("/test", (req, res) => {
 
 app.post("/add-vehicle", async (req, res) => {
 
-    await Team.create(req.body)
+    await Vehicle.create(req.body)
     res.json({ "status": "success" })
 })
 
+app.post("/view-vehicle", async (req, res) => {
+
+    const vehicles = await Vehicle.find()
+    res.json(vehicles)
+})
+
+app.listen(3000, () => {
+
+    console.log("server started")
+})
